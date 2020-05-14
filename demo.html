@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>妙笔仙山播放器</title>
+    <style>
+      body {
+        margin: 0;
+        background-image: url('images/page-bg.jpg');
+      }
+      .player {
+        /* 父元素 */
+        display: flex; /* 开启弹性盒模型，只在父元素有用，btn的父元素是display */
+        justify-content: center; /* 主轴均分 */
+        align-items: center; /* 交叉轴均分 */
+        width: 653px;
+        height: 653px;
+        /* background-color: cadetblue; */
+        margin: 50px auto;
+        background-image: url('images/bg_circle.png'), url('images/bg_center.png');
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .btn {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 94px;
+        height: 94px;
+        /* background-color: chartreuse; */
+        background-image: url('images/btn-bg.png');
+      }
+      .btn-play {
+        width: 29px;
+        height: 36px;
+        background-color: chocolate;
+        background-image: url('images/pause.png');
+        background-repeat: no-repeat;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="player">
+      <div class="btn">
+        <div class="btn-play">
+          <audio id="audio" src="audio/music.mp3"></audio>
+        </div>
+      </div>
+    </div>
+    <script>
+      // 写js代码
+      /*
+        1.需求分析
+        1)获取按钮元素
+        2)获取音频文件
+        2.给按钮绑定一个点击事件
+          1)当音频暂停的时候，做的事件：播放音频，图片改成播放的图片
+          2)当音频播放的时候，做的事件；暂停音频，图片改成暂停的图片
+      */
+      var oBtn = document.getElementsByClassName('btn-play')[0]
+      var oAudio = document.getElementById('audio')
+      oBtn.onclick = function () {
+        //alert('我是谁？')
+        if (oAudio.paused) {
+          oAudio.play()
+          oBtn.style.backgroundImage = 'url(images/play.png)'
+        } else {
+          oAudio.pause()
+          oBtn.style.backgroundImage = 'url(images/pause.png)'
+        }
+      }
+    </script>
+  </body>
+</html>
